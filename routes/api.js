@@ -1,19 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-
-var forest = require('forest-research');
+var overlap = require('forest-overlap');
 var uuid = require('node-uuid');
 
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express', data: tableData });
 });
-
-// router.get('/test', function(req, res) {
-// 	var data = forest.loadFile('/Users/zhangcosmo/Downloads/青冈次生林/乔木原始数据.xlsx');
-// 	var tableData = data[0].getSummaryTable();
-// 	res.send(JSON.stringify(tableData));
-// });
 
 router.post('/generate', function(req, res) {
 	var data = JSON.parse(req.body['data']);
@@ -22,7 +15,7 @@ router.post('/generate', function(req, res) {
 	if (!(fs.existsSync(dir_path) && fs.statSync(dir_path).isDirectory())) fs.mkdirSync(dir_path);
 	var file_abs_path = dir_abs_path + '/' + uuid.v1() + '.xlsx';
 	var filepath = __dirname + '/..' + file_abs_path;
-	forest.putFileSync(filepath, data);
+	overlap.outputDataSync(filepath, data);
 	var real_path = fs.realpathSync(filepath);
 	res.download(real_path, '处理结果.xlsx');
 });
