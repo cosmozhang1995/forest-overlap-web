@@ -1,0 +1,36 @@
+{
+  "name": "forest-overlap-web",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cosmozhang1995/forest-overlap-web.git"
+  },
+  "author": "Cosmo Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cosmozhang1995/forest-overlap-web/issues"
+  },
+  "homepage": "https://github.com/cosmozhang1995/forest-overlap-web",
+  "dependencies": {
+    "express": "~4.2.0",
+    "express-partials": "~0.3.0",
+    "node-uuid": "~1.4.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "connect-multiparty": "~1.2.0",
+    "debug": "~0.7.4",
+    "ejs": "~0.8.5",
+    "forest-overlap": "*",
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-sass": "~0.8.1",
+    "commander": "~2.5.0"
+  }
+}

@@ -1,0 +1,39 @@
+<form id="form" action="/result_direct" method="post" role="form" enctype="multipart/form-data">
+	<div class="form-group">
+		<!-- <label>上传你的表格，一定要是 .xlsx 格式的哦</label> -->
+		<input type="file" id="file" name="file" style="display:none;" />
+		<input type="text" id="limit_type" name="limit_type" style="display:none;" />
+		<!-- <div id="file-dropbox" class="file-dropbox">
+			<div class="file-dropbox-content">上传你的表格，一定要是 .xlsx 格式的哦</div>
+		</div> -->
+		<!-- <input type="text" id="single_feature" name="single_feature" value="false" style="display:none;" /> -->
+		<div class="form-group">
+			<div class="btn-group">
+				<button type="button" class="btn btn-file-choose btn-success">上传你的表格，一定要是 .xlsx 格式的哦</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="btn-group">
+				<button type="button" class="btn btn-limittype-select btn-default" data-value="count">选取指定数量的优势树种</button>
+				<button type="button" class="btn btn-limittype-select btn-default" data-value="threshold">选取优势度大于指定值的优势树种</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<!-- <div class="col-sm-12">
+				<input type="text" class="form-control" id="limit" name="limit" placeholder="指定值">
+			</div> -->
+			<input type="text" class="form-control" id="limit" name="limit" placeholder="指定值">
+		</div>
+		<!-- <div class="form-group">
+			<div class="btn-group">
+				<button type="button" id="btn-check-single-feature" class="btn btn-check btn-default" data-field="single_feature" data-text="胸高断面积/冠幅/盖度 将乘以数目|忽略数目">忽略数目</button>
+			</div>
+		</div> -->
+		<div class="form-group">
+			<div class="btn-group">
+				<button type="submit" class="btn btn-primary">开始</button>
+			</div>
+		</div>
+	</div>
+</form>
+<script type="text/javascript" src="/javascripts/pages/page-index.js"></script>

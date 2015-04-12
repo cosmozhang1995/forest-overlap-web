@@ -1,0 +1,37 @@
+<div class="row">
+	<div id="main" class="col-xs-12">
+		<% if (error) { %>
+			<div class="alert alert-danger" role="alert">
+				<p><strong>啊哦~出错了</strong></p>
+				<p>可能是你的文件格式有问题。把下面的东西截个图或者复制下来发给我吧~</p>
+				<p><%= error %></p>
+			</div>
+		<% } else { %>
+			<h4>这是你上传的表格，用鼠标拖拽选取你需要的列</h4>
+			<p>把鼠标放在<em>物种名称</em>列上，按住左键拖拽到对应的<em>重要值</em>列上，松开即可。</p>
+		<% } %>
+		<div class="btn-group" style="margin-bottom: 10px;">
+			<!-- <a id="btn-clear-arrange" class="btn btn-success" href="javascript:;"><i class="fa fa-fw fa-sort"></i>清除排序</a> -->
+			<a id="btn-export" class="btn btn-primary" href="javascript:;"><i class="fa fa-fw fa-archive"></i>点我导出文件</a>
+		</div>
+		<ul id="table-nav" class="nav nav-tabs" role="tablist" style="margin-bottom: 10px;">
+		</ul>
+		<div id="table-container">
+		</div>
+		<div>
+			共检测到<span id="cols"></span>个列，选取的数据如下表：
+		</div>
+		<div id="records-table-container">
+		</div>
+		<form id="export-form" action="/api/generate" target="_blank" style="display:none;" method="post">
+			<input type="hidden" id="data-input" name="data" value="" />
+		</form>
+	</div>
+</div>
+<% if (data) { %>
+<script type="text/javascript">
+var table_data = JSON.parse(HTMLDecode("<%= data %>"));
+var statistics = JSON.parse(HTMLDecode("<%= statistics %>"));
+</script>
+<% } %>
+<script type="text/javascript" src="/javascripts/pages/page-result.js"></script>
