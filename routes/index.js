@@ -85,6 +85,7 @@ router.post('/result_direct', multipartMiddleware, function(req, res) {
 				}
 			}
 		}
+		var arrangementStatistics = arrangement;
 		var newRecords = {};
 		var statisticRecords = {};
 		for (var j = 0; j < arrangement.length; j++) {
@@ -93,13 +94,16 @@ router.post('/result_direct', multipartMiddleware, function(req, res) {
 			statisticRecords[k] = {};
 			statisticRecords[k].advs = records[k];
 			statisticRecords[k].adv = arrangement[j].adv;
-			console.log(statisticRecords);
 		}
 		tableItem.data = overlap.formOverlapTable(overlap.overlapMatric(newRecords));
 
 		statistics[tableName] = {
 			cols: cols,
-			records: statisticRecords
+			// records: statisticRecords,
+			table: overlap.formStatisticsTable(arrangementStatistics, {
+				header_row: ['物种', 'Levins宽度', 'Hurlber宽度'],
+				sortby: 'levinsWidth'
+			})
 		};
 	}
 	stringifiedData = JSON.stringify(tableData);

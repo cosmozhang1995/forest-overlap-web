@@ -12,7 +12,8 @@
 		<% } %>
 		<div class="btn-group" style="margin-bottom: 10px;">
 			<!-- <a id="btn-clear-arrange" class="btn btn-success" href="javascript:;"><i class="fa fa-fw fa-sort"></i>清除排序</a> -->
-			<a id="btn-export" class="btn btn-primary" href="javascript:;"><i class="fa fa-fw fa-archive"></i>点我导出文件</a>
+			<a id="btn-export" class="btn btn-primary" href="javascript:;"><i class="fa fa-fw fa-archive"></i>点我导出重叠率表</a>
+			<a id="btn-export-statistics" class="btn btn-success" href="javascript:;"><i class="fa fa-fw fa-archive"></i>点我导出生态位宽度表</a>
 		</div>
 		<ul id="table-nav" class="nav nav-tabs" role="tablist" style="margin-bottom: 10px;">
 		</ul>
@@ -25,6 +26,7 @@
 		</div>
 		<form id="export-form" action="/api/generate" target="_blank" style="display:none;" method="post">
 			<input type="hidden" id="data-input" name="data" value="" />
+			<input type="hidden" id="tablename-input" name="table-name" value="" />
 		</form>
 	</div>
 </div>

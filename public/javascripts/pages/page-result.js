@@ -7,7 +7,8 @@ $(document).ready(function() {
 			var table_data_item = table_data[i];
 			var table = tableData(table_data_item.data);
 			var statisticsItem = statistics[table_data_item.name];
-			var statisticsTable = new Table(formRecordTable(statisticsItem.records, statisticsItem.cols.names.length), {
+			// var statisticsTable = new Table(formRecordTable(statisticsItem.records, statisticsItem.cols.names.length), {
+			var statisticsTable = new Table(statisticsItem.table, {
 				withHeader: true,
 				firstHeader: true,
 				cls: 'table table-bordered table-hover',
@@ -49,6 +50,10 @@ $(document).ready(function() {
 			event.preventDefault();
 			exportData();
 		});
+		$('#btn-export-statistics').on('click', function(event) {
+			event.preventDefault();
+			exportData('records');
+		});
 	}
 });
 
@@ -76,15 +81,22 @@ function tableData(json) {
 	});
 }
 
-function exportData() {
+function exportData(tableType) {
 	var data = [];
+	var tableIdPostfix = '';
+	var tableResultName = '-重叠率';
+	if (tableType == "records") {
+		tableIdPostfix = '-records';
+		tableResultName = '-生态位宽度';
+	}
 	$('#table-nav li').each(function(index, el) {
 		data.push({
 			name: $(this).data('name'),
-			data: $(this).data('table').getData()
+			data: $(this).data('table' + tableIdPostfix).getData()
 		});
 	});
 	data = JSON.stringify(data);
 	$('#export-form #data-input').val(data).attr('value', data);
+	$('#export-form #tablename-input').val(tableResultName).attr('value', tableResultName);
 	$('#export-form').submit();
 }

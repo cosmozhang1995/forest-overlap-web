@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/generate', function(req, res) {
+	var tableName = req.body['table-name'] || '';
 	var data = JSON.parse(req.body['data']);
 	var dir_abs_path = '/public/output';
 	var dir_path = __dirname + '/..' + dir_abs_path;
@@ -17,7 +18,7 @@ router.post('/generate', function(req, res) {
 	var filepath = __dirname + '/..' + file_abs_path;
 	overlap.outputDataSync(filepath, data);
 	var real_path = fs.realpathSync(filepath);
-	res.download(real_path, '处理结果.xlsx');
+	res.download(real_path, '处理结果' + tableName + '.xlsx');
 });
 
 router.get('/test', function(req,res) {
